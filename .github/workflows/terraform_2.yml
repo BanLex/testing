@@ -43,8 +43,8 @@ jobs:
         run: |
           cd yandex-cloud-terraform
           echo variable "oauth" { default = "${{ secrets.YC_OAUTH }}" } terraform.tf
-          echo cloud = \""${{ secrets.YC_CLOUD }}"\" >> terraform.tf
-          echo folder = \""${{ secrets.YC_FOLDER }}"\">> terraform.tf
+          echo variable "cloud" { default = "${{ secrets.YC_CLOUD }}" } >> terraform.tf
+          echo variable "folder" { default = "${{ secrets.YC_FOLDER }}" } >> terraform.tf
           
       - name: check format Terraform
         run: |
