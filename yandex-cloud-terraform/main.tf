@@ -8,9 +8,9 @@ terraform {
 }
 
 provider "yandex" {
-  token     = "${ secrets.YC_OAUTH }"
-  cloud_id  = "${ secrets.YC_CLOUD }"
-  folder_id = "${secrets.YC_FOLDER }"
+  token     = "${ var.oauth }"
+  cloud_id  = "${ var.cloud }"
+  folder_id = "${ var.folder }"
   zone      = "ru-central1-a"
 }
 
