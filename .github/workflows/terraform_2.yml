@@ -11,6 +11,17 @@ jobs:
         
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v1
+        
+      - name: go to terraform config directory
+        run: cd yandex-cloud-terraform
+      
+      - name: check format Terraform
+        run: terraform fmt
+        
+      - name: init Terraform
+        run: terraform init
+        
+        
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
 #    - uses: hashicorp/terraform-github-actions/validate@latest
