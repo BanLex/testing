@@ -42,9 +42,9 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
-          echo "oauth = \"${{ secrets.YC_OAUTH }}\"" > terraform.tfvars
-          echo "cloud = \"${{ secrets.YC_CLOUD }}\"" >> terraform.tfvars
-          echo "folder = \"${{ secrets.YC_FOLDER }}\"" >> terraform.tfvars
+          echo oauth = "${{ secrets.YC_OAUTH }}" > terraform.tfvars
+          echo cloud = "${{ secrets.YC_CLOUD }}" >> terraform.tfvars
+          echo folder = "${{ secrets.YC_FOLDER }}" >> terraform.tfvars
           
       - name: check format Terraform
         run: |
