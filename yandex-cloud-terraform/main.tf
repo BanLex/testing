@@ -34,7 +34,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    user-data = "${file("meta.txt")}"
   }
 }
 resource "yandex_vpc_network" "network-1" {
@@ -54,6 +54,4 @@ output "internal_ip_address_vm_1" {
 output "external_ip_address_vm_1" {
   value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
 }
-metadata = {
-    user-data = "${file("./meta.txt")}"
-}
+
