@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./yandex-cloud-terraform    
+        working-directory: yandex-cloud-terraform    
     steps:
     
       - name: Install SSH key
