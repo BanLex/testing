@@ -75,7 +75,7 @@ jobs:
       - name: apply Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform apply
+          echo "yes" | terraform apply
         
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
