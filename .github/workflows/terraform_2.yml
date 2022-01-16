@@ -47,7 +47,7 @@ jobs:
           echo } >> main.tf
           echo variable "cloud" { default = "${{ secrets.YC_CLOUD }}" } >> terraform.tfvars
           echo variable "folder" { default = "${{ secrets.YC_FOLDER }}" } >> terraform.tfvars
-          
+          cat main.tf
       - name: check format Terraform
         run: |
           cd yandex-cloud-terraform
