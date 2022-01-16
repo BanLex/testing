@@ -1,0 +1,9 @@
+#cloud-config
+users:
+  - name: banlex
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDtwYvTyY//b8/r/siy4V2qXHMKPlgrnYt7pgHipdVqF7Ew2yDfyJRj4HYdMdPq1v9sZR77J1V5GNWfOyZ6Ywy9tvpDTLGbh7OWlRMqYhkqH0FSfFxNeQnxKmPZtKHuxxvElUu5gtoqpVvhHA4SzgYrVl7PD9lHScbZyA3i5zuI/C8iWkNHinglzMpuhGAEf74vUZJps6eyaa7CViJvKxjEhvplTuRQnzV2TvF+JvTRBBD0m5q4+GuMmGOVgWqmIT9M1/MGtqLig4Wy31IUzV8RvH5SZom4gB1JMBJESBwHdxDKzWBleLcu+Tqrd6fjpxiynFw8krHKg73FNpVApYOAFCBIfuKNGL117oNaS8GFrBwSNqtL1rlnmqqOErMSOq5vaEdxRe1kP5ZO3ilOW9OL+NBgcbMyBnFJ4BRlLJYlmNjIkvg8jNALTUh/Jk3sDLjGHucmp+b4uuV919cne13dWn7nTsE+p6N/Er1Xd8wXYWiSOFCcG7MICvQIsTdYmyc= banlex@eOS
+      
