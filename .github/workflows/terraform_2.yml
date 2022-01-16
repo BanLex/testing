@@ -21,6 +21,8 @@ jobs:
       - name: init Terraform
         run: terraform init
         
+      - name: init Terraform
+        run: terraform validate
         
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
