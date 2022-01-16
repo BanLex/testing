@@ -42,9 +42,9 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
-          echo oauth = \""${{ secrets.YC_OAUTH }}"\" > terraform.tfvars
-          echo cloud = \""${{ secrets.YC_CLOUD }}"\" >> terraform.tfvars
-          echo folder = \""${{ secrets.YC_FOLDER }}"\">> terraform.tfvars
+          echo variable "oauth" { default = "${{ secrets.YC_OAUTH }}" } terraform.tf
+          echo cloud = \""${{ secrets.YC_CLOUD }}"\" >> terraform.tf
+          echo folder = \""${{ secrets.YC_FOLDER }}"\">> terraform.tf
           
       - name: check format Terraform
         run: |
@@ -64,12 +64,12 @@ jobs:
       - name: plan Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform plan -var-file=terraform.tfvars
+          terraform plan -var-file=terraform.tf
         
       - name: apply Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform apply -var-file=terraform.tfvars
+          terraform apply -var-file=terraform.tf
         
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
