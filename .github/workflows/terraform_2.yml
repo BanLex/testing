@@ -72,19 +72,19 @@ jobs:
           cd yandex-cloud-terraform
           terraform plan
 
-#      - name: terraform-apply
+      - name: terraform-apply
 
-#        uses: dflook/terraform-apply@v1.4.1
-#        with:
-#          # Path to the terraform configuration
-#          path: ./yandex-cloud-terraform/ 
-#          auto_approve: true
-      - name: apply Terraform
-        run: |
-          cd yandex-cloud-terraform
-          terraform apply  --auto-approve
-#        with:
-#          auto_approve: true
+        uses: dflook/terraform-apply@v1.4.1
+        with:
+          # Path to the terraform configuration
+          path: ./yandex-cloud-terraform/ 
+          auto_approve: true
+#      - name: apply Terraform
+#        run: |
+#          cd yandex-cloud-terraform
+#          terraform apply  --auto-approve
+##        with:
+##          auto_approve: true
         
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
