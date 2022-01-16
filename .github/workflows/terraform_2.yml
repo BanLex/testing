@@ -54,12 +54,12 @@ jobs:
       - name: init Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform init -var-file=terraform.tfvars
+          terraform init
         
       - name: validate Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform validate -var-file=terraform.tfvars
+          terraform validate
         
       - name: plan Terraform
         run: |
