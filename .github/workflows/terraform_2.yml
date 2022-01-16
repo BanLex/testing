@@ -4,7 +4,7 @@ on:
 env:
       DAY_OF_WEEK: Mon
       OAUTH: "${{ secrets.YC_OAUTH}}"
-      cloud: "${ secrets.YC_CLOUD}}"
+      cloud: "${{ secrets.YC_CLOUD}}"
       folder: "${{secrets.YC_FOLDER}}"
 #defaults:
 #  run:
@@ -38,31 +38,38 @@ jobs:
         
 #      - name: ls
 #        run: ls -Al  
-             
+        
+      - name: create vars file
+        run: |
+          cd yandex-cloud-terraform
+          echo "oauth = \"${{ secrets.YC_OAUTH }}\"" > terraform.tfvars
+          echo "cloud = \"${{ secrets.YC_CLOUD }}\"" >> terraform.tfvars
+          echo "folder = \"${{ secrets.YC_FOLDER }}\"" >> terraform.tfvars
+          
       - name: check format Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform fmt
+          terraform fmt -var-file=terraform.tfvars
         
       - name: init Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform init
+          terraform init -var-file=terraform.tfvars
         
       - name: validate Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform validate
+          terraform validate -var-file=terraform.tfvars
         
       - name: plan Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform plan
+          terraform plan -var-file=terraform.tfvars
         
       - name: apply Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform apply
+          terraform apply -var-file=terraform.tfvars
         
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
