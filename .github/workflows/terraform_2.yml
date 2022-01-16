@@ -72,7 +72,7 @@ jobs:
           cd yandex-cloud-terraform
           terraform plan
 
-      - name: terraform-apply
+#      - name: terraform-apply
 
 #        uses: dflook/terraform-apply@v1.4.1
 #        with:
