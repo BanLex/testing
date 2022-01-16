@@ -49,7 +49,7 @@ jobs:
       - name: check format Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform fmt -var-file=terraform.tfvars
+          terraform fmt
         
       - name: init Terraform
         run: |
