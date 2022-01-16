@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
 env:
       DAY_OF_WEEK: Mon
-defaults:
-  run:
-    working-directory: ../yandex-cloud-terraform
+#defaults:
+#  run:
+#    working-directory: ../yandex-cloud-terraform
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -27,8 +27,8 @@ jobs:
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v1
       
-      - name: ls
-        run: ls -Al  
+#      - name: ls
+#        run: ls -Al  
         
 #      - name: go to terraform config directory
 #        run: cd yandex-cloud-terraform
@@ -42,16 +42,24 @@ jobs:
           terraform fmt
         
       - name: init Terraform
-        run: terraform init
+        run: |
+          cd yandex-cloud-terraform
+          terraform init
         
       - name: validate Terraform
-        run: terraform validate
+        run: |
+          cd yandex-cloud-terraform
+          terraform validate
         
       - name: plan Terraform
-        run: terraform plan
+        run: |
+          cd yandex-cloud-terraform
+          terraform plan
         
       - name: apply Terraform
-        run: terraform apply
+        run: |
+          cd yandex-cloud-terraform
+          terraform apply
         
 #    - uses: hashicorp/terraform-github-actions/fmt@latest
 #    - uses: hashicorp/terraform-github-actions/init@latest
