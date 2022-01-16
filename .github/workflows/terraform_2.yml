@@ -4,9 +4,9 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ../yandex-cloud-terraform    
+#    defaults:
+#      run:
+#        working-directory: ../yandex-cloud-terraform    
     steps:
     
       - name: Install SSH key
@@ -22,17 +22,19 @@ jobs:
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v1
       
-      - name: ls
-        run: ls -Al  
+#      - name: ls
+#        run: ls -Al  
         
-      - name: go to terraform config directory
-        run: cd ./yandex-cloud-terraform
+#      - name: go to terraform config directory
+#        run: cd yandex-cloud-terraform
         
-      - name: ls
-        run: ls -Al  
+#      - name: ls
+#        run: ls -Al  
              
       - name: check format Terraform
-        run: terraform fmt
+        run: |
+          cd yandex-cloud-terraform
+          terraform fmt
         
       - name: init Terraform
         run: terraform init
