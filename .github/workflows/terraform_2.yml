@@ -6,8 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: hashicorp/terraform-github-actions/fmt@latest
-    - uses: hashicorp/terraform-github-actions/init@latest
-    - uses: hashicorp/terraform-github-actions/validate@latest
-    - uses: hashicorp/terraform-github-actions/plan@latest
-    - uses: hashicorp/terraform-github-actions/apply@latest
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v1
+#    - uses: hashicorp/terraform-github-actions/fmt@latest
+#    - uses: hashicorp/terraform-github-actions/init@latest
+#    - uses: hashicorp/terraform-github-actions/validate@latest
+#    - uses: hashicorp/terraform-github-actions/plan@latest
+#    - uses: hashicorp/terraform-github-actions/apply@latest
