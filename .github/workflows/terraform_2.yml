@@ -21,13 +21,13 @@ jobs:
         uses: hashicorp/setup-terraform@v1
       
       - name: go to terraform config directory
-        run: ll  
+        run: ls -Al  
         
       - name: go to terraform config directory
         run: cd yandex-cloud-terraform
         
       - name: go to terraform config directory
-        run: ll  
+        run: ls -Al  
              
       - name: check format Terraform
         run: terraform fmt
