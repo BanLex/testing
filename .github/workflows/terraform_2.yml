@@ -42,7 +42,7 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
-          echo variable "oauth" { default = "${{ secrets.YC_OAUTH }}" } terraform.tfvars
+          echo variable "oauth" { type = "string" default = "${{ secrets.YC_OAUTH }}" } terraform.tfvars
           echo variable "cloud" { default = "${{ secrets.YC_CLOUD }}" } >> terraform.tfvars
           echo variable "folder" { default = "${{ secrets.YC_FOLDER }}" } >> terraform.tfvars
           
