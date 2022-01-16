@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
 env:
       DAY_OF_WEEK: Mon
+      OAUTH: "${{ secret.YC_OAUTH}}"
+      cloud: "${ secret.YC_CLOUD}}"
+      folder: "${{secret.YC_FOLDER}}"
 #defaults:
 #  run:
 #    working-directory: ../yandex-cloud-terraform
