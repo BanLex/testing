@@ -7,19 +7,8 @@ terraform {
       source = "yandex-cloud/yandex"
     }
   }
-}
-data "s" {
-  backend = "s3"
-  config = {
+  backend "s3" {
     endpoint   = "storage.yandexcloud.net"
     bucket     = "banlex.terraform"
     region     = "us-east-1"
-    key        = "tester.tfstate"
-    access_key = local.access_key
-    secret_key = local.secret_key
-
-    skip_region_validation      = true
-    skip_credentials_validation = true
-  }
-}
-
+    key        = "tester.tfstate"  
