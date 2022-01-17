@@ -6,6 +6,7 @@ env:
       OAUTH: "${{ secrets.YC_OAUTH}}"
       cloud: "${{ secrets.YC_CLOUD}}"
       folder: "${{secrets.YC_FOLDER}}"
+      secrets: "${{secrets.YC_ACCESS_KEY}}"
 #defaults:
 #  run:
 #    working-directory: ../yandex-cloud-terraform
@@ -61,7 +62,7 @@ jobs:
       - name: init Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform init
+          terraform init -backend=false
         
       - name: validate Terraform
         run: |
