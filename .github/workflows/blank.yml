@@ -1,0 +1,71 @@
+name: terraform destroy
+on:
+  workflow_dispatch:
+env:
+      DAY_OF_WEEK: Mon
+      OAUTH: "${{ secrets.YC_OAUTH}}"
+      cloud: "${{ secrets.YC_CLOUD}}"
+      folder: "${{secrets.YC_FOLDER}}"
+      secrets: "${{secrets.YC_ACCESS_KEY}}"
+#defaults:
+#  run:
+#    working-directory: ../yandex-cloud-terraform
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+#    defaults:
+#      run:
+#        working-directory: ../yandex-cloud-terraform    
+    steps:
+    
+      - name: Install SSH key
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          install -m 600 -D /dev/null ~/.ssh/id_rsa.pub
+          echo "${{ secrets.SSH_PUBLUC_KEY }}" > ~/.ssh/id_rsa.pub
+          
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v1
+      
+#      - name: ls
+#        run: ls -Al  
+        
+#      - name: go to terraform config directory
+#        run: cd yandex-cloud-terraform
+        
+#      - name: ls
+#        run: ls -Al  
+        
+      - name: create vars file
+        run: |
+          cd yandex-cloud-terraform
+          echo variable \"oauth\" { >> tf_body.txt 
+          echo   default = \""${{ secrets.YC_OAUTH }}"\" >> tf_body.txt 
+          echo } >> tf_body.txt
+          echo variable \"cloud\" { >> tf_body.txt 
+          echo   default = \""${{ secrets.YC_CLOUD }}"\" >> tf_body.txt 
+          echo } >> tf_body.txt
+          echo variable \"folder\" { >> tf_body.txt 
+          echo   default = \""${{ secrets.YC_FOLDER }}"\" >> tf_body.txt 
+          echo } >> tf_body.txt
+          echo -e "$(cat tf_delay)" > main.tf
+          echo "    access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
+          echo "    secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
+          echo -e "$(cat tf_body.txt)" >> main.tf
+          cat main.tf
+      - name: destroy Terraform
+        run: |
+          cd yandex-cloud-terraform
+          terraform destroy
+        
+
+        
+#    - uses: hashicorp/terraform-github-actions/fmt@latest
+#    - uses: hashicorp/terraform-github-actions/init@latest
+#    - uses: hashicorp/terraform-github-actions/validate@latest
+#    - uses: hashicorp/terraform-github-actions/plan@latest
+#    - uses: hashicorp/terraform-github-actions/apply@latest
