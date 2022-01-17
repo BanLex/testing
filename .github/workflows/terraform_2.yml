@@ -67,7 +67,7 @@ jobs:
       - name: init Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform init -reconfigure
+          terraform init
         
       - name: validate Terraform
         run: |
