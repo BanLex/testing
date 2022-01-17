@@ -51,6 +51,12 @@ jobs:
           echo variable \"folder\" { >> main.tf 
           echo   default = \""${{ secrets.YC_FOLDER }}"\" >> main.tf 
           echo } >> main.tf
+          echo variable \"yc_access_key\" { >> main.tf 
+          echo   default = \""${{ secrets.YC_ACCESS_KEY }}"\" >> main.tf 
+          echo } >> main.tf
+          echo variable \"yc_secret_key\" { >> main.tf 
+          echo   default = \""${{ secrets.YC_SECRET_KEY }}"\" >> main.tf 
+          echo } >> main.tf
           cat main.tf
       - name: check format Terraform
         run: |
