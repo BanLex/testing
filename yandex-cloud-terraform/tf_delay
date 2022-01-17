@@ -8,7 +8,7 @@ terraform {
     }
   }
 }
-data "terraform_remote_state" "config" {
+data "s" {
   backend = "s3"
   config = {
     endpoint   = "storage.yandexcloud.net"
