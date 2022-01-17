@@ -10,8 +10,8 @@ terraform {
     bucket     = "banlex.terraform"
     region     = "us-east-1"
     key        = "tester.tfstate"
-    access_key = "${ yc_access_key }"
-    secret_key = "${ yc_secret_key }"
+    access_key = "${ var.yc_access_key }"
+    secret_key = "${ var.yc_secret_key }"
 
     skip_region_validation      = true
     skip_credentials_validation = true
