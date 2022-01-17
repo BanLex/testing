@@ -1,8 +1,8 @@
 terraform {
-  locals {
-    access_key = local.access_key
-    secret_key = local.access_key
-  }
+  
+  access_key = local.access_key
+  secret_key = local.access_key
+  
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
