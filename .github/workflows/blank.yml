@@ -65,7 +65,7 @@ jobs:
       - name: destroy Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform destroy
+          terraform destroy  --auto-approve
         
 
         
