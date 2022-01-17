@@ -21,7 +21,7 @@ terraform {
 
 
 provider "yandex" {
-  token     = "${ var.oauth }"
+  token     = "${ local.oauth }"
   cloud_id  = "${ var.cloud }"
   folder_id = "${ var.folder }"
   zone      = "ru-central1-a"
