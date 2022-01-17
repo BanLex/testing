@@ -57,6 +57,11 @@ jobs:
           echo "    secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
           echo -e "$(cat tf_body.txt)" >> main.tf
           cat main.tf
+      - name: init Terraform
+        run: |
+          cd yandex-cloud-terraform
+          terraform init
+          
       - name: destroy Terraform
         run: |
           cd yandex-cloud-terraform
