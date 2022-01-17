@@ -42,7 +42,7 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
-          echo -e "locals {\naccess_key = \""${{ secrets.YC_ACCESS_KEY }}"\"\nsecret_key = \""${{ secrets.YC_SECRET_KEY }}"\"\n}\n$(cat main.tf)" > main.tf
+          echo -e "locals {\n  access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"\n  secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"\n}\n$(cat main.tf)" > main.tf
           echo variable \"oauth\" { >> main.tf 
           echo   default = \""${{ secrets.YC_OAUTH }}"\" >> main.tf 
           echo } >> main.tf
