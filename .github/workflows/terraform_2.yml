@@ -42,7 +42,7 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
-          echo -e "locals {access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"\n}\n$(cat main.tf)" > main.tf
+          echo -e "locals {\naccess_key = \""${{ secrets.YC_ACCESS_KEY }}"\"\nsecret_key = \""${{ secrets.YC_SECRET_KEY }}"\"\n}\n$(cat main.tf)" > main.tf
           echo variable \"oauth\" { >> main.tf 
           echo   default = \""${{ secrets.YC_OAUTH }}"\" >> main.tf 
           echo } >> main.tf
@@ -52,10 +52,10 @@ jobs:
           echo variable \"folder\" { >> main.tf 
           echo   default = \""${{ secrets.YC_FOLDER }}"\" >> main.tf 
           echo } >> main.tf
-          echo locals { >> main.tf 
-          echo   access_key = \""${{ secrets.YC_ACCESS_KEY }}"\" >> main.tf 
-          echo   secret_key = \""${{ secrets.YC_SECRET_KEY }}"\" >> main.tf 
-          echo } >> main.tf
+ #         echo locals { >> main.tf 
+ #         echo   access_key = \""${{ secrets.YC_ACCESS_KEY }}"\" >> main.tf 
+ #         echo   secret_key = \""${{ secrets.YC_SECRET_KEY }}"\" >> main.tf 
+ #         echo } >> main.tf
           cat main.tf
       - name: check format Terraform
         run: |
