@@ -52,11 +52,9 @@ jobs:
           echo variable \"folder\" { >> tf_body.txt 
           echo   default = \""${{ secrets.YC_FOLDER }}"\" >> tf_body.txt 
           echo } >> tf_body.txt
-          echo "locals {" > main.tf
-          echo "  access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
-          echo "  secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
-          echo "}" >> main.tf 
-          echo -e "$(cat tf_delay)" >> main.tf
+          echo -e "$(cat tf_delay)" > main.tf
+          echo "    access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
+          echo "    secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
           echo -e "$(cat tf_body.txt)" >> main.tf
           cat main.tf
       - name: check format Terraform
@@ -74,16 +72,16 @@ jobs:
           cd yandex-cloud-terraform
           terraform validate
   
-      - name: create vars file
-        run: |
-          cd yandex-cloud-terraform
-          echo "locals {" > main.tf
-          echo "  access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
-          echo "  secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
-          echo "}" >> main.tf 
-          echo -e "$(cat tf_delay)" >> main.tf
-          echo -e "$(cat tf_body.txt)" >> main.tf
-          cat main.tf
+#      - name: create vars file
+#        run: |
+#          cd yandex-cloud-terraform
+#          echo "locals {" > main.tf
+#          echo "  access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
+#          echo "  secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
+#          echo "}" >> main.tf 
+#          echo -e "$(cat tf_delay)" >> main.tf
+#          echo -e "$(cat tf_body.txt)" >> main.tf
+#          cat main.tf
           
       - name: plan Terraform
         run: |
