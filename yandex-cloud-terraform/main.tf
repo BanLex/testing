@@ -12,7 +12,7 @@ data "terraform_remote_state" "state" {
   config {
     endpoint   = "storage.yandexcloud.net"
     bucket     = "banlex.terraform"
-    region     = "us-east-1"
+    region     = "ru-central1"
     key        = "tester.tfstate"
     access_key = local.access_key
     secret_key = local.secret_key
