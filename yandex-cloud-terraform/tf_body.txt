@@ -1,7 +1,7 @@
 
 
 provider "yandex" {
-  token     = "${ local.oauth }"
+  token     = "${ var.oauth }"
   cloud_id  = "${ var.cloud }"
   folder_id = "${ var.folder }"
   zone      = "ru-central1-a"
