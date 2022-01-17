@@ -77,7 +77,7 @@ jobs:
           echo "  access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
           echo "  secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
           echo "}" >> main.tf 
-          echo -e "$(cat tf_init.txt)" >> main.tf
+          echo -e "$(cat tf_delay)" >> main.tf
           echo -e "$(cat tf_body.txt)" >> main.tf
           cat main.tf
           
