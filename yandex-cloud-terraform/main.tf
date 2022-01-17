@@ -1,11 +1,23 @@
 terraform {
   required_providers {
     yandex = {
-      source  = "yandex-cloud/yandex"
-      version = "0.61.0"
+      source = "yandex-cloud/yandex"
     }
   }
+
+  backend "s3" {
+    endpoint   = "storage.yandexcloud.net"
+    bucket     = "banlex.terraform"
+    region     = "us-east-1"
+    key        = "tester.tfstate"
+    access_key = "${ yc_access_key }"
+    secret_key = "${ yc_secret_key }"
+
+    skip_region_validation      = true
+    skip_credentials_validation = true
+  }
 }
+
 
 provider "yandex" {
   token     = "${ var.oauth }"
