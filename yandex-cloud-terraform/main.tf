@@ -1,10 +1,13 @@
 terraform {
-  
+  backend "s3" {}
+ 
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
     }
   }
+}
+data "terraform_remote_state" "state" {
   backend = "s3"
   config {
     endpoint   = "storage.yandexcloud.net"
