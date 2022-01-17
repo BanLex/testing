@@ -1,4 +1,8 @@
 terraform {
+  locals {
+    access_key = local.access_key
+    secret_key = local.access_key
+  }
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
@@ -10,8 +14,8 @@ terraform {
     bucket     = "banlex.terraform"
     region     = "us-east-1"
     key        = "tester.tfstate"
-    access_key = "${local.access_key}"
-    secret_key = "${local.secret_key}"
+    access_key = local.access_key
+    secret_key = local.secret_key
 
     skip_region_validation      = true
     skip_credentials_validation = true
