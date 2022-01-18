@@ -99,7 +99,7 @@ jobs:
         run: |
           cd yandex-cloud-terraform
           terraform apply  --auto-approve
-          ls -Al
+          ls -ARl
 ##        with:
 ##          auto_approve: true
         
