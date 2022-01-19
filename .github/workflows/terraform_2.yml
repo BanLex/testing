@@ -99,7 +99,11 @@ jobs:
         run: |
           cd yandex-cloud-terraform
           terraform apply  --auto-approve
-          ls -ARl
+      
+      - name: run Ansible playbook
+        run: |
+          cp ./ops/ssh-config ./.ssh/config
+          ansible-playbook -i ./playbooks/hosts.inv ./playbooks/playbook.yml
 ##        with:
 ##          auto_approve: true
         
