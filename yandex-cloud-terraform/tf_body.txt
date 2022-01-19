@@ -60,9 +60,6 @@ resource "yandex_compute_instance" "docker" {
   metadata = {
     user-data = "${file("meta.txt")}"
   }
-  tags {
-    Name = "docker-${count.index}"
-  }
 }
 
 resource "yandex_compute_instance" "nfs" {
