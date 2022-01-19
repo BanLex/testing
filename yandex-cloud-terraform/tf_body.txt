@@ -35,6 +35,18 @@ resource "yandex_compute_instance" "gw" {
   metadata = {
     user-data = "${file("meta.txt")}"
   }
+  provisioner "remote-exec" {
+    inline = ["sudo apt update"]
+
+    connection {
+      type        = "ssh"
+      user        = "banlex"
+    }
+  }
+
+  provisioner "local-exec" {
+    command = "echo HostName ${self.public_ip} \\nUser banlex >> ../ops/ssh-config"
+  }
 }
 
 resource "yandex_compute_instance" "docker" {
@@ -103,15 +115,4 @@ output "external_ip_address_gw" {
   value = yandex_compute_instance.gw.network_interface.0.nat_ip_address
 }
 
-provisioner "remote-exec" {
-    inline = ["sudo apt update"]
 
-    connection {
-      type        = "ssh"
-      user        = "banlex"
-    }
-  }
-
-  provisioner "local-exec" {
-    command = "echo HostName ${self.public_ip} \\nUser banlex >> ../ops/ssh-config"
-  }
