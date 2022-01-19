@@ -1,7 +1,8 @@
 
 terraform {
-  
- 
+  locals {
+    countss = 4
+  }
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
