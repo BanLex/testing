@@ -102,7 +102,7 @@ jobs:
       
       - name: run Ansible playbook
         run: |
-          cp ./ops/ssh-config ./.ssh/config
+          cp ./ops/ssh-config ~/.ssh/config
           ansible-playbook -i ./playbooks/hosts.inv ./playbooks/playbook.yml
 ##        with:
 ##          auto_approve: true
