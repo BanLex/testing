@@ -106,7 +106,7 @@ output "internal_ip_address_gw" {
 }
 output "internal_ip_address_docker" {
   count = local.countss
-  value = yandex_compute_instance.docker-${count.index}.network_interface.0.ip_address
+  value = yandex_compute_instance.docker-"${count.index}".network_interface.0.ip_address
 }
 output "internal_ip_address_nfc" {
   value = yandex_compute_instance.nfc.network_interface.0.ip_address
