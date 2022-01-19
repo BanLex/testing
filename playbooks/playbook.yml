@@ -4,5 +4,10 @@
   become: yes
   
   tasks:
-    - name: on ip forward
-      shell: sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+    - name: Install HAProxy
+      apt:
+        name: haproxy
+        state: present
+        
+    
+    
