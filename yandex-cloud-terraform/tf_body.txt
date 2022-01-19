@@ -37,11 +37,6 @@ resource "yandex_compute_instance" "gw" {
   }
   provisioner "remote-exec" {
     inline = ["sudo apt update"]
-
-    connection {
-      type        = "ssh"
-      user        = "banlex"
-    }
   }
 
   provisioner "local-exec" {
