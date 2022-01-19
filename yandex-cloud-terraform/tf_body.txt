@@ -30,6 +30,7 @@ resource "yandex_compute_instance" "vm-1" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
+    network_ip = "192.168.10.155"
   }
 
   metadata = {
@@ -48,7 +49,7 @@ resource "yandex_vpc_subnet" "subnet-1" {
 }
 
 output "internal_ip_address_vm_1" {
-  value = "192.168.10.155"
+  value = yandex_compute_instance.vm-1.network_interface.0.ip_address
 }
 output "external_ip_address_vm_1" {
   value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
