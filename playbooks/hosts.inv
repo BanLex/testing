@@ -1,0 +1,11 @@
+[gateway]
+gw
+
+[share]
+nfs
+
+[docker]
+docker-0
+docker-1
+docker-2
+docker-3
