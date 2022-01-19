@@ -35,9 +35,6 @@ resource "yandex_compute_instance" "gw" {
   metadata = {
     user-data = "${file("meta.txt")}"
   }
-  provisioner "remote-exec" {
-    inline = ["sudo apt update"]
-  }
 
   provisioner "local-exec" {
     command = "echo HostName ${yandex_compute_instance.gw.network_interface.0.nat_ip_address} \\nUser banlex >> ../ops/ssh-config"
