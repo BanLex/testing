@@ -113,6 +113,6 @@ provisioner "remote-exec" {
   }
 
   provisioner "local-exec" {
-    command = "echo HostName ${self.public_ip}" >> ..\ops\ssh-config"
-    command = "echo User banlex >> ..\ops\ssh-config"
+    command = "echo HostName ${self.public_ip}" >> ../ops/ssh-config"
+    command = "echo User banlex >> ../ops/ssh-config"
   }
