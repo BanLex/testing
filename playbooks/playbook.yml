@@ -1,5 +1,5 @@
 ---
-name: config firewall
+- name: config firewall
   hosts: gateway
   become: yes
   
