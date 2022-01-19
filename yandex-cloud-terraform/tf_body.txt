@@ -113,5 +113,6 @@ provisioner "remote-exec" {
   }
 
   provisioner "local-exec" {
-    command = "echo \"Host nfs\n  HostName nfs\nUser banlex\nProxyJump gw\nHost docker-0\nHostName nfs\nUser banlex\nProxyJump gw\nHost docker-1\nHostName nfs\nUser banlex\nProxyJump gw\nHost docker-2\nHostName nfs\nUser banlex\nProxyJump gw\nHost docker-3\nHostName nfs\nUser banlex\nProxyJump gw\nHost gw\n   HostName '${self.public_ip},'\n   User banlex \""
+    command = "echo "HostName '${self.public_ip},'" >> ..\ops\ssh-config"
+    command = "echo "User banlex >> ..\ops\ssh-config"
   }
