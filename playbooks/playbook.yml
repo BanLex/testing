@@ -13,7 +13,7 @@
         mode: '0644'
         
 - name: config nfs
-  hosts: nfs, docker
+  hosts: nfs
   become: yes
   
   tasks:
