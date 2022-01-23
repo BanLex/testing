@@ -103,7 +103,7 @@ jobs:
       - name: run Ansible playbook
         run: |
           cp ./ops/ssh-config ~/.ssh/config
-          apt update
+          sudo apt update
       - name: run Ansible playbook
         run: |
           apt install software-properties-common
