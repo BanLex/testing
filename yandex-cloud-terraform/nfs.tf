@@ -22,6 +22,6 @@ resource "yandex_compute_instance" "nfs" {
   }
   
   provisioner "local-exec" {
-    command = "echo '${self.ip_address}\tnfs >> hosts'"
+    command = "echo '${self.network_interface.0.ip_address}\tnfs >> hosts'"
   }
 }
