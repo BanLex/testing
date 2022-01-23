@@ -1,7 +1,7 @@
 resource "yandex_compute_instance" "docker" {
   count = local.countss
   name = "docker-${count.index}"
-  fqdn = "docker-${count.index}"
+  
   resources {
     cores  = 2
     memory = 2
@@ -20,5 +20,9 @@ resource "yandex_compute_instance" "docker" {
 
   metadata = {
     user-data = "${file("meta.txt")}"
+  }
+  
+  provisioner "local-exec" {
+    command = "echo 'HostName ${yandex_compute_instance.docker-${count.index}.network_interface.0.nat_ip_address} \\nUser banlex' >> ../ops/ssh-config && echo '${yandex_compute_instance.docker-${count.index}.network_interface.0.ip_address}\t${yandex_compute_instance.docker-${count.index}.name}>>hosts'"
   }
 }
