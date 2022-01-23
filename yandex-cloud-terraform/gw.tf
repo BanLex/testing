@@ -1,6 +1,6 @@
 resource "yandex_compute_instance" "gw" {
   name = "gw"
-
+  fqdn = "gw"
   resources {
     cores  = 2
     memory = 2
