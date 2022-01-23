@@ -105,12 +105,12 @@ jobs:
           ls -aR
           cp ./ops/ssh-config ~/.ssh/config
           cat ~/.ssh/config
- #         sudo apt update
- #         sudo apt install software-properties-common
- #         sudo add-apt-repository --yes --update ppa:ansible/ansible
- #         sudo apt install ansible
- #         ssh-agent bash
- #         ansible-playbook -i ./playbooks/hosts.inv ./playbooks/playbook.yml
+          sudo apt update
+          sudo apt install software-properties-common
+          sudo add-apt-repository --yes --update ppa:ansible/ansible
+          sudo apt install ansible
+          ssh-agent bash
+          ansible-playbook -i ./playbooks/hosts.inv ./playbooks/playbook.yml
 ##        with:
 ##          auto_approve: true
         
