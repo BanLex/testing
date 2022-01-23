@@ -22,9 +22,9 @@ resource "yandex_compute_instance" "gw" {
   }
 
   provisioner "local-exec" {
-    command = "echo 'HostName ${yandex_compute_instance.gw.network_interface.0.nat_ip_address} \\nUser banlex' >> ../ops/ssh-config'"
+    command = "echo 'HostName ${yandex_compute_instance.gw.network_interface.0.nat_ip_address} \\nUser banlex' >> ../ops/ssh-config"
   }
   provisioner "local-exec" {
-    command = "echo '${self.network_interface.0.ip_address}\\t${self.name}>>hosts'"
+    command = "echo '${self.network_interface.0.ip_address}\\t${self.name}' >> hosts"
   }
 }
