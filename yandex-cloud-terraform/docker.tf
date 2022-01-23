@@ -23,6 +23,6 @@ resource "yandex_compute_instance" "docker" {
   }
   
   provisioner "local-exec" {
-    command = "echo 'HostName ${yandex_compute_instance.docker-${count.index}.network_interface.0.nat_ip_address} \\nUser banlex' >> ../ops/ssh-config && echo '${yandex_compute_instance.docker-${count.index}.network_interface.0.ip_address}\t${yandex_compute_instance.docker-${count.index}.name}>>hosts'"
+    command = "echo 'HostName ${slef.nat_ip_address} \\nUser banlex' >> ../ops/ssh-config && echo '${self.ip_address}\t${self.name}>>hosts'"
   }
 }
