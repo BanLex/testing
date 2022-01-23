@@ -104,10 +104,16 @@ jobs:
         run: |
           cp ./ops/ssh-config ~/.ssh/config
           apt update
+      - name: run Ansible playbook
+        run: |
           apt install software-properties-common
           add-apt-repository --yes --update ppa:ansible/ansible
+      - name: run Ansible playbook
+        run: |
           apt install ansible
           ssh-agent bash
+      - name: run Ansible playbook
+        run: |
           ansible-playbook -i ./playbooks/hosts.inv ./playbooks/playbook.yml
 ##        with:
 ##          auto_approve: true
