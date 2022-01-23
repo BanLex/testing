@@ -102,6 +102,7 @@ jobs:
       
       - name: run Ansible playbook
         run: |
+          ls -aR
           cp ./ops/ssh-config ~/.ssh/config
           cat ~/.ssh/config
  #         sudo apt update
