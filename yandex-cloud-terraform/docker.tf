@@ -23,6 +23,6 @@ resource "yandex_compute_instance" "docker" {
   }
   
   provisioner "local-exec" {
-    command = "echo '${self.network_interface.0.ip_address}\t${self.name}>>hosts'"
+    command = "echo '${self.network_interface.0.ip_address}\\t${self.name}'>>hosts"
   }
 }
