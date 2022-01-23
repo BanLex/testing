@@ -103,6 +103,7 @@ jobs:
       - name: run Ansible playbook
         run: |
           cp ./ops/ssh-config ~/.ssh/config
+          cat ~/.ssh/config
           sudo apt update
           sudo apt install software-properties-common
           sudo add-apt-repository --yes --update ppa:ansible/ansible
