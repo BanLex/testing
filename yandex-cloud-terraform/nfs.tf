@@ -1,6 +1,6 @@
 resource "yandex_compute_instance" "nfs" {
   name = "nfs"
-  fqdn = "nfs"
+  
   resources {
     cores  = 2
     memory = 2
@@ -19,5 +19,9 @@ resource "yandex_compute_instance" "nfs" {
 
   metadata = {
     user-data = "${file("meta.txt")}"
+  }
+  
+  provisioner "local-exec" {
+    command = "echo 'HostName ${yandex_compute_instance.nfs.network_interface.0.nat_ip_address} \\nUser banlex' >> ../ops/ssh-config && echo '${yandex_compute_instance.nfs.network_interface.0.ip_address}\t${yandex_compute_instance.nfs.name}>>hosts'"
   }
 }
