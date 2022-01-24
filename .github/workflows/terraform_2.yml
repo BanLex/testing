@@ -34,9 +34,9 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
+          echo '  access_key = "${{ secrets.YC_ACCESS_KEY }}"'  >> backend.tfbackend 
+          echo '  secret_key = "${{ secrets.YC_SECRET_KEY }}"'  >> backend.tfbackend
           echo "locals {" > locals.tf
-          echo '  access_key = "${{ secrets.YC_ACCESS_KEY }}"'  >> locals.tf 
-          echo '  secret_key = "${{ secrets.YC_SECRET_KEY }}"'  >> locals.tf
           echo '  oauth      = "${{ secrets.YC_OAUTH }}"'  >> locals.tf 
           echo '  cloud = "${{ secrets.YC_CLOUD }}"'  >> locals.tf 
           echo '  folder = "${{ secrets.YC_FOLDER }}"'  >> locals.tf 
