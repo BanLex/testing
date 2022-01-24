@@ -16,13 +16,14 @@ resource "yandex_compute_instance" "docker" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = false
+    ip_address = "192.168.10.1${count.index}"
   }
 
   metadata = {
-    user-data = "${file("meta.txt")}"
+    user-data = "${file("user")}"
   }
   
-  provisioner "local-exec" {
-    command = "echo '${self.network_interface.0.ip_address}\\t${self.name}'>>hosts"
+  provisioner "remote-exec" {
+    command = "echo 'Hello'>>hello"
   }
 }
