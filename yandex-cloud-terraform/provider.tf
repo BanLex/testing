@@ -11,7 +11,7 @@ terraform {
   }
 }
 
-data "s3" {
+data "yandex_storage_bucket" "s3" {
   backend = "s3"
   config {    
     endpoint   = "storage.yandexcloud.net"
