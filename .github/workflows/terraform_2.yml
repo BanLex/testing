@@ -61,7 +61,7 @@ jobs:
       - name: plan Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform plan -backend-config=backend.tfbackend
+          terraform plan
 
       - name: apply Terraform
         run: |
