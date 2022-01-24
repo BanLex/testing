@@ -46,7 +46,7 @@ jobs:
       - name: check format Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform fmt
+          terraform fmt -backend-config=backend.tfbackend
         
       - name: init Terraform
         run: |
@@ -56,17 +56,17 @@ jobs:
       - name: validate Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform validate
+          terraform validate -backend-config=backend.tfbackend
           
       - name: plan Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform plan
+          terraform plan -backend-config=backend.tfbackend
 
       - name: apply Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform apply  --auto-approve
+          terraform apply  --auto-approve -backend-config=backend.tfbackend
       
 #      - name: run Ansible playbook
 #        run: |
