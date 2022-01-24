@@ -3,7 +3,7 @@ locals {
 }
 
 terraform {
-  backend "s3" {}
+  
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
@@ -11,9 +11,9 @@ terraform {
   }
 }
 
-data "yandex_storage_object" "s3" {
-  backend = "s3"
-  config {    
+resource "yandex_storage_bucket" "test" {
+  
+      
     endpoint   = "storage.yandexcloud.net"
     bucket     = "banlex.terraform"
     region     = "us-east-1"
@@ -22,7 +22,7 @@ data "yandex_storage_object" "s3" {
     secret_key = "${local.secret_key}"
     skip_region_validation      = true
     skip_credentials_validation = true
-  }
+  
 }
 provider "yandex" {
   token     = "${ local.oauth }"
