@@ -23,7 +23,4 @@ resource "yandex_compute_instance" "docker" {
     user-data = "${file("user")}"
   }
   
-  provisioner "remote-exec" {
-    command = "echo 'Hello'>>hello"
-  }
 }
