@@ -17,7 +17,7 @@ resource "yandex_compute_instance" "nfs" {
     nat       = false
     ip_address = "192.168.10.4"
     dns_record {
-      fqdn = "nfs.ru-central1.internal"
+      fqdn = "nfs.ru-central1.internal."
     }
   }
 
