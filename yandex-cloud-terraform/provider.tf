@@ -11,19 +11,7 @@ terraform {
   }
 }
 
-data "terraform_remote_state" "vpc" {
-  backend = "s3"
-  config = {  
-    endpoint   = "storage.yandexcloud.net"
-    bucket     = "banlex.terraform"
-    region     = "us-east-1"
-    key        = "tester.tfstate"
-    access_key = "${local.access_key}"
-    secret_key = "${local.secret_key}"
-    skip_region_validation      = true
-    skip_credentials_validation = true
-  }
-}
+
 provider "yandex" {
   token     = "${ local.oauth }"
   cloud_id  = "${ local.cloud }"
