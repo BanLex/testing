@@ -43,20 +43,15 @@ jobs:
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
-          echo variable \"oauth\" { >> tf_body.txt 
-          echo   default = \""${{ secrets.YC_OAUTH }}"\" >> tf_body.txt 
-          echo } >> tf_body.txt
-          echo variable \"cloud\" { >> tf_body.txt 
-          echo   default = \""${{ secrets.YC_CLOUD }}"\" >> tf_body.txt 
-          echo } >> tf_body.txt
-          echo variable \"folder\" { >> tf_body.txt 
-          echo   default = \""${{ secrets.YC_FOLDER }}"\" >> tf_body.txt 
-          echo } >> tf_body.txt
-          echo -e "$(cat tf_delay)" > main.tf
-          echo "    access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
-          echo "    secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
-          echo -e "$(cat tf_body.txt)" >> main.tf
-          cat main.tf
+          echo "locals {" > locals.tf
+          echo '  access_key = "${{ secrets.YC_ACCESS_KEY }}"'  >> locals.tf 
+          echo '  secret_key = "${{ secrets.YC_SECRET_KEY }}"'  >> locals.tf
+          echo '  oauth      = "${{ secrets.YC_OAUTH }}"'  >> locals.tf 
+          echo '  cloud = "${{ secrets.YC_CLOUD }}"'  >> locals.tf 
+          echo '  folder = "${{ secrets.YC_FOLDER }}"'  >> locals.tf 
+          echo '}'  >> locals.tf
+          cat locals.tf
+          
       - name: init Terraform
         run: |
           cd yandex-cloud-terraform
@@ -67,10 +62,3 @@ jobs:
           cd yandex-cloud-terraform
           terraform destroy  --auto-approve
         
-
-        
-#    - uses: hashicorp/terraform-github-actions/fmt@latest
-#    - uses: hashicorp/terraform-github-actions/init@latest
-#    - uses: hashicorp/terraform-github-actions/validate@latest
-#    - uses: hashicorp/terraform-github-actions/plan@latest
-#    - uses: hashicorp/terraform-github-actions/apply@latest
