@@ -16,14 +16,15 @@ resource "yandex_compute_instance" "nfs" {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = false
     ip_address = "192.168.10.4"
+    dns_record {
+      fqdn = "nfs.ru-central1.internal"
+    }
   }
 
   metadata = {
     user-data = "${file("user")}"
   }
   
-  dns_record {
-    fqdn = "nfs.ru-central1.internal"
-  }
+  
   
 }
