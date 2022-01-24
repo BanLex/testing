@@ -22,4 +22,8 @@ resource "yandex_compute_instance" "nfs" {
     user-data = "${file("user")}"
   }
   
+  dns_record {
+    fqdn = "nfs.ru-central1.internal"
+  }
+  
 }
