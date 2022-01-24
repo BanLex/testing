@@ -15,13 +15,11 @@ resource "yandex_compute_instance" "nfs" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = false
+    ip_address = "192.168.10.4"
   }
 
   metadata = {
-    user-data = "${file("meta.txt")}"
+    user-data = "${file("user")}"
   }
   
-  provisioner "local-exec" {
-    command = "echo '${self.network_interface.0.ip_address}\\tnfs' >> hosts"
-  }
 }
