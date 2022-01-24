@@ -24,3 +24,5 @@ Host docker-3
   ProxyJump gw  
 
 Host gw
+  HostName 84.201.129.141
+  User banlex
