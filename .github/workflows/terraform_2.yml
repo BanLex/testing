@@ -30,16 +30,7 @@ jobs:
         
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v1
-      
-#      - name: ls
-#        run: ls -Al  
-        
-#      - name: go to terraform config directory
-#        run: cd yandex-cloud-terraform
-        
-#      - name: ls
-#        run: ls -Al  
-        
+
       - name: create vars file
         run: |
           cd yandex-cloud-terraform
@@ -51,30 +42,6 @@ jobs:
           echo '  folder = "${{ secrets.YC_FOLDER }}"'  >> locals.tf 
           echo '}'  >> locals.tf
           cat locals.tf
- #         echo variable \"oauth\" { >> tf_body.txt 
- #         echo   default = \""${{ secrets.YC_OAUTH }}"\" >> tf_body.txt 
- #         echo } >> tf_body.txt
- #         echo variable \"cloud\" { >> tf_body.txt 
- #         echo   default = \""${{ secrets.YC_CLOUD }}"\" >> tf_body.txt 
- #         echo } >> tf_body.txt
- #         echo variable \"folder\" { >> tf_body.txt 
- #         echo   default = \""${{ secrets.YC_FOLDER }}"\" >> tf_body.txt 
- #         echo } >> tf_body.txt
- #         echo -e "$(cat tf_delay)" > main.tf
- #         echo "    access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
- #         echo "    secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
- #         echo -e "$(cat tf_body.txt)" >> main.tf
-  #        cat main.tf
-
-#    secret_key = "${local.secret_key}"
-#    skip_region_validation      = true
- #   skip_credentials_validation = true
-#  }
-#}
-#provider "yandex" {
-#  token     = "${ local.oauth }"
-#  cloud_id  = "${ local.cloud }"
-#  folder_id = "${ local.folder }"
 
       - name: check format Terraform
         run: |
@@ -84,36 +51,18 @@ jobs:
       - name: init Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform init
+          terraform init -backend-config=backend.tfbackend
         
       - name: validate Terraform
         run: |
           cd yandex-cloud-terraform
           terraform validate
-  
-#      - name: create vars file
-#        run: |
-#          cd yandex-cloud-terraform
-#          echo "locals {" > main.tf
-#          echo "  access_key = \""${{ secrets.YC_ACCESS_KEY }}"\"" >> main.tf
-#          echo "  secret_key = \""${{ secrets.YC_SECRET_KEY }}"\"" >> main.tf
-#          echo "}" >> main.tf 
-#          echo -e "$(cat tf_delay)" >> main.tf
-#          echo -e "$(cat tf_body.txt)" >> main.tf
-#          cat main.tf
           
       - name: plan Terraform
         run: |
           cd yandex-cloud-terraform
           terraform plan
 
-#      - name: terraform-apply
-#
-#        uses: dflook/terraform-apply@v1.4.1
-#        with:
-#          # Path to the terraform configuration
-#          path: ./yandex-cloud-terraform/ 
-#          auto_approve: true
       - name: apply Terraform
         run: |
           cd yandex-cloud-terraform
