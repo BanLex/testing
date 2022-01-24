@@ -25,8 +25,8 @@ data "terraform_remote_state" "s3" {
   }
 }
 provider "yandex" {
-  token     = "${ var.oauth }"
-  cloud_id  = "${ var.cloud }"
-  folder_id = "${ var.folder }"
+  token     = "${ local.oauth }"
+  cloud_id  = "${ local.cloud }"
+  folder_id = "${ local.folder }"
   zone      = "ru-central1-a"
 }
