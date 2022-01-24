@@ -16,7 +16,9 @@ resource "yandex_compute_instance" "docker" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = false
-    ip_address = "192.168.10.1${count.index}"
+    dns_record {
+      fqdn = "docker-${count.index}.ru-central1.internal."
+    }
   }
 
   metadata = {
