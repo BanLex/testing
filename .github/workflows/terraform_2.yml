@@ -46,7 +46,7 @@ jobs:
       - name: check format Terraform
         run: |
           cd yandex-cloud-terraform
-          terraform fmt -backend-config=backend.tfbackend
+          terraform fmt
         
       - name: init Terraform
         run: |
