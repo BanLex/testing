@@ -15,16 +15,12 @@ resource "yandex_compute_instance" "gw" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
+    ip_address = "192.168.10.3"
+    nat_ip_address = "84.201.129.141"
   }
 
   metadata = {
-    user-data = "${file("meta.txt")}"
+    user-data = "${file("user")}"
   }
 
-  provisioner "local-exec" {
-    command = "echo '    HostName ${yandex_compute_instance.gw.network_interface.0.nat_ip_address} \\n    User banlex' >> ../ops/ssh-config"
-  }
-  provisioner "local-exec" {
-    command = "echo '${self.network_interface.0.ip_address}\\t${self.name}' >> hosts"
-  }
 }
