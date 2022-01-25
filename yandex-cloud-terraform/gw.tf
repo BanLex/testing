@@ -9,6 +9,7 @@ resource "yandex_compute_instance" "gw" {
   boot_disk {
     initialize_params {
       image_id = "fd8drj7lsj7btotd7et5"
+      size = "8"
     }
   }
 
